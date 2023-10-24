@@ -20,7 +20,7 @@ namespace Bazar3K
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; database=DB_BAZAR3K; uid=root; pwd=etec";
+            string connection = "server=localhost; database=db_bazar3k; uid=root; pwd=etec";
             MySqlConnection mySqlConnection = new MySqlConnection(connection);
             mySqlConnection.Open();
 

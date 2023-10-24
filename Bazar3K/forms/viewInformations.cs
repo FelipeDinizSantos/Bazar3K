@@ -20,7 +20,23 @@ namespace Bazar3K
 
         private void viewInformations_Load(object sender, EventArgs e)
         {
-            string connection = "server=localhost; database=DB_BAZAR3K; uid=root; pwd=etec";
+            string connection = "server=localhost; database=db_bazar3k; uid=root; pwd=etec";
+            MySqlConnection mySqlConnection = new MySqlConnection(connection);
+            mySqlConnection.Open();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter("select * from TB_FUNCIONARIO", mySqlConnection);
+
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            dvgFunc.DataSource = dt;
+
+
+        }
+
+        private void CarregarDadosBanco()
+        {
+            string connection = "server=localhost; database=db_bazar3k; uid=root; pwd=etec";
             MySqlConnection mySqlConnection = new MySqlConnection(connection);
             mySqlConnection.Open();
 
@@ -32,21 +48,27 @@ namespace Bazar3K
             dvgFunc.DataSource = dt;
         }
 
-        private void dgv_func_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dvgFunc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            codBox.Text = dvgFunc.Rows[e.RowIndex].Cells[0].Value.toString());
-            nameBox.Text = dvgFunc.Rows[e.RowIndex].Cells[1].Value.toString());
-            cpfBox.Text = dvgFunc.Rows[e.RowIndex].Cells[2].Value.toString());
-        }
-
-        private void dgv_func_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            codBox.Text = dvgFunc.Rows[e.RowIndex].Cells[0].Value.ToString();
+            nameBox.Text = dvgFunc.Rows[e.RowIndex].Cells[1].Value.ToString();
+            cpfBox.Text = dvgFunc.Rows[e.RowIndex].Cells[2].Value.ToString();
+            panelInputs.Visible = true;
         }
 
         private void submit_Click(object sender, EventArgs e)
         {
-           
+            string connection = "server=localhost; database=DB_BAZAR3K; uid=root; pwd=etec";
+            MySqlConnection mySqlConnection = new MySqlConnection(connection);
+            mySqlConnection.Open();
+            MySqlCommand comando = new MySqlCommand("update TB_FUNCIONARIO set nome='" + nameBox.Text + "', cpf='" + cpfBox.Text + "' where id=" + codBox.Text, mySqlConnection);
+            comando.ExecuteNonQuery();
+
+            CarregarDadosBanco();
+
+            MessageBox.Show("Alteração realizada!");
+
+            panelInputs.Visible = false;
         }
     }
 }
