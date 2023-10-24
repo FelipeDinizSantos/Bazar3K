@@ -29,7 +29,24 @@ namespace Bazar3K
             DataTable dt = new DataTable();
             adapter.Fill(dt);
 
-            dgv_func.DataSource = dt;
+            dvgFunc.DataSource = dt;
+        }
+
+        private void dgv_func_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            codBox.Text = dvgFunc.Rows[e.RowIndex].Cells[0].Value.toString());
+            nameBox.Text = dvgFunc.Rows[e.RowIndex].Cells[1].Value.toString());
+            cpfBox.Text = dvgFunc.Rows[e.RowIndex].Cells[2].Value.toString());
+        }
+
+        private void dgv_func_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void submit_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

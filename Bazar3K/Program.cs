@@ -13,7 +13,7 @@ namespace Bazar3K
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new splashScreen());
+            Application.Run(new viewInformations());
         }
     }
 }

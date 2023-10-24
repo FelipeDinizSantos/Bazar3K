@@ -32,5 +32,10 @@ namespace Bazar3K
             MessageBox.Show("Cadastro realizado com sucesso!","Sucesso");
             this.Close();
         }
+
+        private void employeeRegister_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
