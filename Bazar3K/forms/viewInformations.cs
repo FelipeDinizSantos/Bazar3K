@@ -30,8 +30,6 @@ namespace Bazar3K
             adapter.Fill(dt);
 
             dvgFunc.DataSource = dt;
-
-
         }
 
         private void CarregarDadosBanco()
@@ -69,6 +67,26 @@ namespace Bazar3K
             MessageBox.Show("Alteração realizada!");
 
             panelInputs.Visible = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir este funcionario?", "CONFIRMAÇÃO", MessageBoxButtons.YesNo);
+
+            if(dialogResult == DialogResult.Yes)
+            {
+                string connection = "server=localhost; database=DB_BAZAR3K; uid=root; pwd=etec";
+                MySqlConnection mySqlConnection = new MySqlConnection(connection);
+                mySqlConnection.Open();
+                MySqlCommand comando = new MySqlCommand("delete from TB_FUNCIONARIO where id=" + codBox.Text, mySqlConnection);
+                comando.ExecuteNonQuery();
+
+                CarregarDadosBanco();
+
+                MessageBox.Show("Deleção realizada!");
+
+                panelInputs.Visible = false;
+            }
         }
     }
 }

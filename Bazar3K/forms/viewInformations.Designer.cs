@@ -38,6 +38,7 @@ namespace Bazar3K
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelInputs = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgFunc)).BeginInit();
             this.panelInputs.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +114,7 @@ namespace Bazar3K
             // 
             // panelInputs
             // 
+            this.panelInputs.Controls.Add(this.btnDelete);
             this.panelInputs.Controls.Add(this.cpfBox);
             this.panelInputs.Controls.Add(this.label3);
             this.panelInputs.Controls.Add(this.label1);
@@ -125,6 +127,16 @@ namespace Bazar3K
             this.panelInputs.Size = new System.Drawing.Size(296, 178);
             this.panelInputs.TabIndex = 8;
             this.panelInputs.Visible = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(107, 142);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Text = "Excluir";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // viewInformations
             // 
@@ -155,5 +167,6 @@ namespace Bazar3K
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panelInputs;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
